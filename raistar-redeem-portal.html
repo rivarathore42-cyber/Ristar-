@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAISTAR REDEEM CODE - Free Fire Code Redemption Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Reset & Base Variables */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg-pitch: #0d0d0d;
+      --bg-card: rgba(18, 18, 20, 0.92);
+      --bg-input: #17171c;
+      --neon-orange: #ff6a00;
+      --neon-cyan: #00d2ff;
+      --neon-green: #10b981;
+      --neon-red: #ef4444;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    body {
+      background-color: var(--bg-pitch);
+      color: var(--text-main);
+      font-family: 'Rajdhani', 'Inter', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Ambient Glowing Accents & Free Fire Bunny Bundle Background */
+    .bg-artwork {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 20%, rgba(255, 106, 0, 0.15), transparent 60%),
+                  radial-gradient(circle at 80% 80%, rgba(0, 210, 255, 0.12), transparent 50%),
+                  url('./src/assets/images/bunny_bundle_bg_1790681972126.jpg') center/cover no-repeat;
+      opacity: 0.18;
+      pointer-events-none;
+      z-index: 0;
+      filter: contrast(120%) saturate(130%);
+    }
+
+    .vignette-overlay {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle, transparent 40%, #0d0d0d 95%);
+      pointer-events-none;
+      z-index: 1;
+    }
+
+    .app-container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    /* Header Nav */
+    header {
+      width: 100%;
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(13, 13, 13, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 14px 20px;
+    }
+
+    .nav-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--neon-orange), var(--neon-cyan));
+      padding: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 15px rgba(255, 106, 0, 0.3);
+    }
+
+    .brand-icon-inner {
+      width: 100%;
+      height: 100%;
+      background: #111;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--neon-orange);
+    }
+
+    .brand-name {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #fff;
+    }
+
+    .brand-name span {
+      color: var(--neon-orange);
+    }
+
+    .brand-sub {
+      font-size: 0.65rem;
+      color: var(--neon-cyan);
+      letter-spacing: 2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      display: block;
+    }
+
+    .balance-pill {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      border-radius: 30px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.15);
+    }
+
+    .balance-amount {
+      color: var(--neon-cyan);
+      font-weight: 800;
+      font-family: monospace;
+      font-size: 1rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 40px 16px 20px;
+    }
+
+    .badge-bunny {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      background: rgba(255, 106, 0, 0.1);
+      border: 1px solid rgba(255, 106, 0, 0.35);
+      color: var(--neon-orange);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 16px;
+      box-shadow: 0 0 20px rgba(255, 106, 0, 0.2);
+    }
+
+    /* Requirement 1: Main Header Text "RAISTAR REDEEM CODE" (Large, glowing font, centered) */
+    .main-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 0 0 20px rgba(255, 106, 0, 0.65), 0 0 45px rgba(0, 210, 255, 0.45);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    /* Requirement 1: Subtitle "Free Fire Code Redemption Portal" */
+    .subtitle {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--neon-cyan);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .hero-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      max-width: 540px;
+      margin: 0 auto;
+    }
+
+    /* Requirement 5: 3-Step Guide */
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+      margin: 24px 0 32px;
+    }
+
+    .guide-step {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      backdrop-filter: blur(8px);
+    }
+
+    .step-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .step-1 .step-num { background: rgba(255, 106, 0, 0.2); color: var(--neon-orange); border: 1px solid var(--neon-orange); }
+    .step-2 .step-num { background: rgba(0, 210, 255, 0.2); color: var(--neon-cyan); border: 1px solid var(--neon-cyan); }
+    .step-3 .step-num { background: rgba(16, 185, 129, 0.2); color: var(--neon-green); border: 1px solid var(--neon-green); }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #fff;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .step-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    /* Main Grid Layout */
+    .portal-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 28px;
+      align-items: start;
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .portal-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Requirement 3: Main Redeem Form Centered Sleek UI Card */
+    .card-wrap {
+      background: linear-gradient(180deg, rgba(255, 106, 0, 0.4), rgba(0, 210, 255, 0.2) 60%, rgba(255, 255, 255, 0.05));
+      border-radius: 24px;
+      padding: 1px;
+      box-shadow: 0 0 50px rgba(255, 106, 0, 0.12);
+    }
+
+    .card-body {
+      background: var(--bg-card);
+      border-radius: 23px;
+      padding: 30px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      margin-bottom: 22px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .card-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      color: var(--neon-green);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+    }
+
+    .form-label .req {
+      font-size: 0.75rem;
+      color: var(--neon-orange);
+      font-weight: normal;
+    }
+
+    .form-select, .form-input {
+      width: 100%;
+      height: 54px;
+      background: var(--bg-input);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 0 16px;
+      color: #fff;
+      font-size: 1rem;
+      font-family: inherit;
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    .form-select {
+      cursor: pointer;
+    }
+
+    .form-input {
+      font-family: monospace;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 1.1rem;
+    }
+
+    .form-select:focus, .form-input:focus {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 15px rgba(0, 210, 255, 0.25);
+    }
+
+    .input-hint {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+    }
+
+    /* Action Button: Styled with vibrant gradient colors (bright orange and neon blue) */
+    .btn-redeem {
+      width: 100%;
+      height: 56px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(90deg, #ff6a00 0%, #ff8c00 40%, #00d2ff 100%);
+      color: #fff;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      box-shadow: 0 0 30px rgba(255, 106, 0, 0.4), 0 0 45px rgba(0, 210, 255, 0.25);
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-redeem:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 40px rgba(255, 106, 0, 0.6), 0 0 60px rgba(0, 210, 255, 0.4);
+    }
+
+    .btn-redeem:active {
+      transform: translateY(1px);
+    }
+
+    /* Active Codes & Side Cards */
+    .side-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .side-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .active-code-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      margin-bottom: 8px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .active-code-row:hover {
+      background: rgba(255, 106, 0, 0.08);
+      border-color: rgba(255, 106, 0, 0.4);
+    }
+
+    .code-badge {
+      font-family: monospace;
+      font-weight: 700;
+      color: var(--neon-orange);
+      background: rgba(255, 106, 0, 0.15);
+      border: 1px solid rgba(255, 106, 0, 0.3);
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+    }
+
+    .code-amount {
+      font-weight: 700;
+      color: #fff;
+      font-size: 0.9rem;
+    }
+
+    .btn-copy {
+      background: transparent;
+      border: 1px solid rgba(0, 210, 255, 0.4);
+      color: var(--neon-cyan);
+      border-radius: 6px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .btn-copy:hover {
+      background: var(--neon-cyan);
+      color: #000;
+    }
+
+    /* History Table */
+    .history-section {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 24px;
+      margin-bottom: 40px;
+    }
+
+    .history-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .history-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .history-table th {
+      color: var(--text-muted);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .history-table td {
+      padding: 14px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .status-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .status-success {
+      background: rgba(16, 185, 129, 0.15);
+      color: var(--neon-green);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .status-failed {
+      background: rgba(239, 68, 68, 0.15);
+      color: var(--neon-red);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-width: 420px;
+      width: calc(100% - 48px);
+    }
+
+    .toast {
+      padding: 16px 20px;
+      border-radius: 16px;
+      color: #fff;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+      animation: slideIn 0.3s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .toast.success {
+      background: rgba(14, 36, 23, 0.95);
+      border: 1px solid rgba(16, 185, 129, 0.5);
+    }
+
+    .toast.error {
+      background: rgba(41, 13, 13, 0.95);
+      border: 1px solid rgba(239, 68, 68, 0.5);
+    }
+
+    .toast-title {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+
+    .toast-msg {
+      font-size: 0.85rem;
+      color: #e2e8f0;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      background: #0a0a0c;
+      padding: 24px 16px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Bunny Bundle Overlay & Vignette -->
+  <div class="bg-artwork"></div>
+  <div class="vignette-overlay"></div>
+
+  <!-- Top Navigation Bar -->
+  <header>
+    <div class="nav-wrapper">
+      <div class="brand">
+        <div class="brand-icon">
+          <div class="brand-icon-inner">🔥</div>
+        </div>
+        <div>
+          <span class="brand-name">RAISTAR <span>REDEEM</span></span>
+          <span class="brand-sub">Free Fire Portal</span>
+        </div>
+      </div>
+      <div class="balance-pill">
+        <span>Balance:</span>
+        <span class="balance-amount" id="balanceDisplay">₹0</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="badge-bunny">✨ Free Fire Bunny Bundle Edition</div>
+      <h1 class="main-title">RAISTAR REDEEM CODE</h1>
+      <p class="subtitle">Free Fire Code Redemption Portal</p>
+      <p class="hero-desc">Redeem your official Free Fire vouchers and gift cards instantly into your balance.</p>
+    </section>
+
+    <!-- 3-Step Guide (Requirement 5) -->
+    <div class="guide-grid">
+      <div class="guide-step step-1">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">1. Select Amount</div>
+          <div class="step-desc">Pick ₹100, ₹120, ₹130, ₹140 or ₹150</div>
+        </div>
+      </div>
+      <div class="guide-step step-2">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">2. Enter Code</div>
+          <div class="step-desc">Type or paste valid redeem code</div>
+        </div>
+      </div>
+      <div class="guide-step step-3">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">3. Click Redeem Now</div>
+          <div class="step-desc">Instant verification and credit</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Portal Grid -->
+    <div class="portal-grid">
+      
+      <!-- Left: Centered Sleek UI Card (Requirement 3) -->
+      <div class="card-wrap">
+        <div class="card-body">
+          <div class="card-header">
+            <h2 class="card-title">Redeem Voucher</h2>
+            <div class="status-badge">● Live Server</div>
+          </div>
+
+          <form id="redeemForm">
+            <!-- Dropdown Select Menu -->
+            <div class="form-group">
+              <label class="form-label" for="amountSelect">
+                <span>Select Redeem Amount</span>
+                <span class="req">* Required</span>
+              </label>
+              <select class="form-select" id="amountSelect" required>
+                <option value="" disabled selected>-- Select Amount Tier --</option>
+                <option value="100">₹100</option>
+                <option value="120">₹120</option>
+                <option value="130">₹130</option>
+                <option value="140">₹140</option>
+                <option value="150">₹150</option>
+              </select>
+            </div>
+
+            <!-- Text Input Field -->
+            <div class="form-group">
+              <label class="form-label" for="codeInput">
+                <span>Enter Redeem Code</span>
+                <span class="req">* Required</span>
+              </label>
+              <input 
+                type="text" 
+                class="form-input" 
+                id="codeInput" 
+                placeholder="XYZ123ABC" 
+                required 
+              />
+              <p class="input-hint">Code format: 8-12 uppercase alphanumeric characters.</p>
+            </div>
+
+            <!-- Action Button -->
+            <button type="submit" class="btn-redeem" id="redeemBtn">
+              ⚡ REDEEM NOW
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Right: Active Codes List (Requirement 4) -->
+      <div>
+        <div class="side-card">
+          <div class="side-title">🔥 Active Redeem Codes</div>
+          <p style="font-size:0.75rem; color:var(--text-muted); margin-bottom:14px;">
+            Click COPY to apply instantly into the form:
+          </p>
+
+          <div class="active-code-row" onclick="applyCode('RAISTAR100', '100')">
+            <div>
+              <span class="code-badge">RAISTAR100</span>
+              <span class="code-amount" style="margin-left: 8px;">₹100</span>
+            </div>
+            <button type="button" class="btn-copy">COPY</button>
+          </div>
+
+          <div class="active-code-row" onclick="applyCode('RAISTAR120', '120')">
+            <div>
+              <span class="code-badge">RAISTAR120</span>
+              <span class="code-amount" style="margin-left: 8px;">₹120</span>
+            </div>
+            <button type="button" class="btn-copy">COPY</button>
+          </div>
+
+          <div class="active-code-row" onclick="applyCode('RAISTAR130', '130')">
+            <div>
+              <span class="code-badge">RAISTAR130</span>
+              <span class="code-amount" style="margin-left: 8px;">₹130</span>
+            </div>
+            <button type="button" class="btn-copy">COPY</button>
+          </div>
+
+          <div class="active-code-row" onclick="applyCode('RAISTAR140', '140')">
+            <div>
+              <span class="code-badge">RAISTAR140</span>
+              <span class="code-amount" style="margin-left: 8px;">₹140</span>
+            </div>
+            <button type="button" class="btn-copy">COPY</button>
+          </div>
+
+          <div class="active-code-row" onclick="applyCode('RAISTAR150', '150')">
+            <div>
+              <span class="code-badge">RAISTAR150</span>
+              <span class="code-amount" style="margin-left: 8px;">₹150</span>
+            </div>
+            <button type="button" class="btn-copy">COPY</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Recent Redemption History Table (Requirement 4) -->
+    <section class="history-section">
+      <div class="history-header">
+        <h3 style="font-family:'Orbitron',sans-serif; font-size:1.1rem; text-transform:uppercase;">
+          Recent Redemption History
+        </h3>
+        <span style="font-size:0.75rem; color:var(--text-muted);">Real-time Ledger</span>
+      </div>
+
+      <div style="overflow-x:auto;">
+        <table class="history-table">
+          <thead>
+            <tr>
+              <th>Redeem Code</th>
+              <th>Transaction ID</th>
+              <th>Time</th>
+              <th>Status</th>
+              <th style="text-align:right;">Amount</th>
+            </tr>
+          </thead>
+          <tbody id="historyTableBody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 RAISTAR REDEEM CODE. All rights reserved. Free Fire Code Redemption Portal.</p>
+  </footer>
+
+  <!-- Toast Notification Center -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Interactive JavaScript -->
+  <script>
+    // State management
+    let balance = parseInt(localStorage.getItem('raistar_balance') || '0', 10);
+    let history = JSON.parse(localStorage.getItem('raistar_history') || '[]');
+
+    if (history.length === 0) {
+      history = [
+        { code: 'RAISTAR150', txnId: 'FF92817402', time: 'Just now', status: 'SUCCESS', amount: 150 }
+      ];
+    }
+
+    const balanceDisplay = document.getElementById('balanceDisplay');
+    const historyTableBody = document.getElementById('historyTableBody');
+    const toastContainer = document.getElementById('toastContainer');
+    const redeemForm = document.getElementById('redeemForm');
+    const amountSelect = document.getElementById('amountSelect');
+    const codeInput = document.getElementById('codeInput');
+    const redeemBtn = document.getElementById('redeemBtn');
+
+    function updateBalanceUI() {
+      balanceDisplay.textContent = '₹' + balance.toLocaleString('en-IN');
+      localStorage.setItem('raistar_balance', balance.toString());
+    }
+
+    function renderHistoryUI() {
+      historyTableBody.innerHTML = '';
+      history.forEach(item => {
+        const tr = document.createElement('tr');
+        const isSuccess = item.status === 'SUCCESS';
+        tr.innerHTML = `
+          <td style="font-family:monospace; font-weight:700; color:#fff;">${item.code}</td>
+          <td style="font-family:monospace; font-size:0.8rem; color:var(--neon-cyan);">${item.txnId}</td>
+          <td style="font-size:0.8rem; color:var(--text-muted);">${item.time}</td>
+          <td>
+            <span class="status-pill ${isSuccess ? 'status-success' : 'status-failed'}">
+              ${item.status}
+            </span>
+          </td>
+          <td style="text-align:right; font-weight:700; font-family:monospace; color:${isSuccess ? 'var(--neon-green)' : 'var(--text-muted)'};">
+            ₹${item.amount}
+          </td>
+        `;
+        historyTableBody.appendChild(tr);
+      });
+      localStorage.setItem('raistar_history', JSON.stringify(history));
+    }
+
+    function showToast(type, title, message) {
+      const toast = document.createElement('div');
+      toast.className = `toast ${type}`;
+      toast.innerHTML = `
+        <div style="font-size:1.3rem;">${type === 'success' ? '✅' : '⚠️'}</div>
+        <div>
+          <div class="toast-title">${title}</div>
+          <div class="toast-msg">${message}</div>
+        </div>
+      `;
+      toastContainer.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        toast.style.transition = 'all 0.3s ease';
+        setTimeout(() => toast.remove(), 300);
+      }, 4500);
+    }
+
+    window.applyCode = function(code, amount) {
+      codeInput.value = code;
+      amountSelect.value = amount;
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(code);
+      }
+      showToast('success', 'Code Applied', `Code ${code} copied & selected in form!`);
+    };
+
+    redeemForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const amount = amountSelect.value;
+      const code = codeInput.value.trim().toUpperCase();
+
+      if (!amount || !code) {
+        showToast('error', 'Validation Error', 'Please select an amount and enter a valid redeem code.');
+        return;
+      }
+
+      redeemBtn.disabled = true;
+      redeemBtn.textContent = 'VERIFYING...';
+
+      setTimeout(() => {
+        const currentTime = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        const txnId = 'FF' + Math.floor(10000000 + Math.random() * 90000000);
+
+        // Check if code was already redeemed
+        const alreadyRedeemed = history.some(item => item.code === code && item.status === 'SUCCESS');
+
+        if (alreadyRedeemed) {
+          showToast('error', 'Already Claimed', `Code ${code} has already been claimed!`);
+          history.unshift({
+            code: code,
+            txnId: txnId,
+            time: currentTime,
+            status: 'FAILED',
+            amount: parseInt(amount, 10)
+          });
+          renderHistoryUI();
+          redeemBtn.disabled = false;
+          redeemBtn.textContent = '⚡ REDEEM NOW';
+          return;
+        }
+
+        // Successful redemption
+        const amountNum = parseInt(amount, 10);
+        balance += amountNum;
+        updateBalanceUI();
+
+        history.unshift({
+          code: code,
+          txnId: txnId,
+          time: currentTime,
+          status: 'SUCCESS',
+          amount: amountNum
+        });
+        renderHistoryUI();
+
+        showToast('success', 'Redeemed Successfully', `Congratulations! ₹${amountNum} redeem code ${code} has been redeemed successfully!`);
+
+        codeInput.value = '';
+        amountSelect.value = '';
+        redeemBtn.disabled = false;
+        redeemBtn.textContent = '⚡ REDEEM NOW';
+      }, 600);
+    });
+
+    // Initialize UI on load
+    updateBalanceUI();
+    renderHistoryUI();
+  </script>
+</body>
+</html>

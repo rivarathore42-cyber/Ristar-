@@ -1,0 +1,6 @@
+{
+  "name": "हंसराज थालोड - रिडीम कोड पोर्टल",
+  "description": "एक आधुनिक और सुंदर रिडीम कोड पोर्टल जहां आप आसानी से अपने रिडीम कोड को रिडीम कर सकते हैं।",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
